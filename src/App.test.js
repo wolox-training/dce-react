@@ -1,9 +1,22 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { mount } from 'enzyme';
+
 import App from './App';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('#App', () => {
+  let component = null;
+
+  beforeEach(() => {
+    component = mount(<App />);
+  });
+
+  afterEach(() => {
+    component.unmount();
+  });
+
+  describe('when mounting the application', () => {
+    it('shows the Learn React text', () => {
+      expect(component.find('a').props().children).toMatch(/Learn React/);
+    });
+  });
 });
