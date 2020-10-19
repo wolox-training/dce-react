@@ -33,7 +33,7 @@
   margin-bottom: 16px;
 }
 
-@mixin button-common () {
+%button-common {
   border: 2px solid $earls-green;
   border-radius: 5px;
   display: inline-block;
@@ -48,14 +48,14 @@
 
 .button-primary {
 
-  @include button-common();
+  @extend %button-common;
   background-color: $earls-green;
   color: $white;
 }
 
 .button-secondary {
-
-  @include button-common();
+  
+  @extend %button-common;
   background-color: transparent;
   color: $earls-green;
 }

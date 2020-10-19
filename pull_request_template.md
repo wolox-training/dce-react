@@ -1,11 +1,11 @@
 ## Summary
 
-[Change!] Describe your feature, problems you had, notes, improvements and others.
+The signup form was implemented, without any validation and with the functionality of the sign up button, which is to show a console.log() with the information.
 
 ## Screenshots
 
-[Change!] Show the screenshots of the views you modified.
+![demonstration](signup.gif)
 
 ## Trello Card
 
-[Change!] Link to the associated Trello card.
+https://trello.com/c/Bs30bq3X/100-sign-up-i-layout
