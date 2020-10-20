@@ -10,8 +10,7 @@ export default function SignUp() {
     <div className={styles.container}>
       <img src={wolox} alt="wolox" className={styles.image} />
       <Form />
-      <hr className={`m-top-3 m-bottom-3 ${styles.line}`} />
-      <button type="button" className="button-secondary">
+      <button type="button" className={`m-bottom-3 button-secondary ${styles.line}`}>
         Login
       </button>
     </div>

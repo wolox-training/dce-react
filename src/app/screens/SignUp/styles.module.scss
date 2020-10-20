@@ -13,6 +13,16 @@
   }
 
   .line {
-    border: 1px solid $silver-chalice;
+    position: relative;
+
+    &::before {
+      border-top: 2px solid $silver-chalice;
+      content: '';
+      display: block;
+      left: 0;
+      position: absolute;
+      top: -18px;
+      width: 100%;
+    }
   }
 }
