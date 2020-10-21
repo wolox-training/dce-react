@@ -1,0 +1,10 @@
+@import 'variables/colors';
+
+.form {
+  .label {
+    color: $black;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 8px;
+  }
+}

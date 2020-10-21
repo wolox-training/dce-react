@@ -1,17 +1,22 @@
 @import '~wolox-equalizer/equalizer';
 
+@import 'variables/colors';
+
+@import 'variables/fonts';
+
 @import 'layout';
 
 @import 'margins';
 
 @import 'components';
 
-// TODO: Edit this global styles
+* {
+  font-family: Roboto, sans-serif;
+}
 
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, 'Droid Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

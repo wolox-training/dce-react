@@ -3,10 +3,11 @@ module.exports = {
   rules: {
     'selector-max-type': 2,
     'at-rule-no-unknown': [ true, {
-      ignoreAtRules: ['if', 'for', 'extend', 'mixin']
+      ignoreAtRules: ['if', 'for', 'extend', 'mixin', 'include']
     }],
     'scss/no-duplicate-dollar-variables': [ true, {
       ignoreInsideAtRules: ['if', 'mixin', 'media']
-    }]
+    }],
+    'plugin/stylelint-no-indistinguishable-colors': false
   }
 };
