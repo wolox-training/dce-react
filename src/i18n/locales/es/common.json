@@ -1,0 +1,13 @@
+{
+  "inputs": {
+    "name": "Nombre",
+    "lastName": "Apellido",
+    "email": "Correo",
+    "password": "Contrasena",
+    "confirmPassword": "Confirmar Contrasena"
+  },
+  "buttons": {
+    "signUp": "Registrarse",
+    "login": "Iniciar Sesion"
+  }
+}
