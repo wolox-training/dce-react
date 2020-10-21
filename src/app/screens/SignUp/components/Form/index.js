@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import i18next from 'i18next';
 
 import TextField from '~components/TextField';
+import Loader from '~components/Loader';
 import useAPI from '~hooks/useAPI';
 import { signUpSchema } from '~utils/yupvalidators';
 
@@ -26,7 +27,6 @@ export default function Form() {
       }
     });
   };
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="column m-bottom-6">
       <TextField
@@ -67,6 +67,7 @@ export default function Form() {
       <button type="submit" className="button-primary m-top-1">
         {i18next.t('Common:buttonSignUp')}
       </button>
+      {isLoading && <Loader />}
     </form>
   );
 }

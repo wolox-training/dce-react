@@ -16,7 +16,8 @@
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.9.4",
     "react-i18next": "^11.7.3",
-    "react-scripts": "3.4.3",
+    "react-scripts": "^3.4.4",
+    "react-spinkit": "^3.0.0",
     "wolox-equalizer": "0.0.3",
     "yup": "^0.29.3"
   },
@@ -68,7 +69,7 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.3",
     "husky": "^4.3.0",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.5",
     "postcss": "^7.0.35",
     "postcss-html": "^0.36.0",
     "postcss-syntax": "^0.36.2",
