@@ -1,14 +1,13 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
+import i18next from 'i18next';
 
 import TextField from '~components/TextField';
 import useAPI from '~hooks/useAPI';
 import { signUpSchema } from '~utils/yupvalidators';
 
 export default function Form() {
-  const { t } = useTranslation('common');
   const { register, handleSubmit, errors } = useForm({ resolver: yupResolver(signUpSchema) });
   const [{ isLoading, isError, response }, doFetch] = useAPI({
     url: '/users',
@@ -34,39 +33,39 @@ export default function Form() {
         type="text"
         name="firstName"
         ref={register}
-        title={t('common:inputs.name')}
+        title={i18next.t('Common:inputName')}
         error={errors.firstName}
       />
       <TextField
         type="text"
         name="lastName"
         ref={register}
-        title={t('common:inputs.lastName')}
+        title={i18next.t('Common:inputLastName')}
         error={errors.lastName}
       />
       <TextField
         type="text"
         name="email"
         ref={register}
-        title={t('common:inputs.email')}
+        title={i18next.t('Common:inputEmail')}
         error={errors.email}
       />
       <TextField
         type="password"
         name="password"
         ref={register}
-        title={t('common:inputs.password')}
+        title={i18next.t('Common:inputPassword')}
         error={errors.password}
       />
       <TextField
         type="password"
         name="confirmPassword"
         ref={register}
-        title={t('common:inputs.confirmPassword')}
+        title={i18next.t('Common:inputConfirmPassword')}
         error={errors.confirmPassword}
       />
       <button type="submit" className="button-primary m-top-1">
-        Sign Up
+        {i18next.t('Common:buttonSignUp')}
       </button>
     </form>
   );
