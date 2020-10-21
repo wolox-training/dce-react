@@ -1,6 +1,6 @@
 import React from 'react';
 
-import wolox from '../../assets/logos/wolox.png';
+import wolox from '~assets/logos/wolox.png';
 
 import Form from './components/Form';
 import styles from './styles.module.scss';

@@ -10,7 +10,8 @@ module.exports = {
           "~screens": "./src/app/screens",
           "~hooks": "./src/app/hooks",
           "~assets": "./src/app/assets",
-          "~config": "./src/config"
+          "~config": "./src/config",
+          "~utils": "./src/utils"
         }
       }
     ]
