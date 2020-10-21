@@ -15,7 +15,6 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.9.4",
-    "react-i18next": "^11.7.3",
     "react-scripts": "^3.4.4",
     "react-spinkit": "^3.0.0",
     "wolox-equalizer": "0.0.3",
