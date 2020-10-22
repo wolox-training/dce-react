@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 
 const TextField = forwardRef(({ title, inputVariant, error, ...rest }, ref) => (
   <div className={styles['textfield-container']}>
-    <label className={styles.title}> {title} </label>
+    <label className={styles.title}>{title}</label>
     <input
       ref={ref}
       className={`full-width ${!!error && 'input-error'} ${styles['text-field']} ${inputVariant}`}
