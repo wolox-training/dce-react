@@ -9,3 +9,12 @@ i18next.addResources('es', 'Common', {
   buttonSignUp: 'Sign Up',
   buttonLogin: 'Login'
 });
+
+i18next.addResources('es', 'Validators', {
+  required: 'Este campo es requerido',
+  email: 'Correo electronico invalido',
+  minLength: 'Debe tener minimo {{number}} caracteres',
+  maxLength: 'Deber tener {{number}} o menos caracteres',
+  password: 'La contrasena debe contener minimo una letra miniscula, una letra mayuscula y un numero',
+  confirmPassword: 'Las contrasenas no coinciden'
+});

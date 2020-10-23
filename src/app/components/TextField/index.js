@@ -1,17 +1,18 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import styles from './styles.module.scss';
 
 const TextField = forwardRef(({ title, inputVariant, error, ...rest }, ref) => (
-  <div className={styles['textfield-container']}>
+  <div className={styles.textfieldContainer}>
     <label className={styles.title}> {title} </label>
     <input
       ref={ref}
-      className={`full-width ${!!error && 'input-error'} ${styles['text-field']} ${inputVariant}`}
+      className={classNames('full-width', styles.textField, inputVariant, { 'input-error': !!error })}
       {...rest}
     />
-    <label className={`text-error ${styles.error} ${!error && 'hidden'}`}>{error?.message}</label>
+    <label className={classNames('text-error', styles.error, { hidden: !error })}>{error?.message}</label>
   </div>
 ));
 
