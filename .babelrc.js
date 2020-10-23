@@ -6,11 +6,11 @@ module.exports = {
       {
         root: ["./src"],
         alias: {
-          "~components": "./src/app/components",
-          "~screens": "./src/app/screens",
-          "~hooks": "./src/app/hooks",
           "~assets": "./src/app/assets",
+          "~components": "./src/app/components",
           "~config": "./src/config",
+          "~hooks": "./src/app/hooks",
+          "~screens": "./src/app/screens",
           "~utils": "./src/utils"
         }
       }

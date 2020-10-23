@@ -1,28 +1,20 @@
 @import 'variables/colors';
 
-.container {
-  background-color: $wild-sand;
-  border-top: 8px solid $cerulean;
-  margin: 0 auto;
-  width: 300px;
-  padding: 0 25px 24px;
+.image {
+  display: block;
+  margin: 20px auto 16px;
+}
 
-  .image {
+.line {
+  position: relative;
+
+  &::before {
+    border-top: 2px solid $silver-chalice;
+    content: '';
     display: block;
-    margin: 20px auto 16px;
-  }
-
-  .line {
-    position: relative;
-
-    &::before {
-      border-top: 2px solid $silver-chalice;
-      content: '';
-      display: block;
-      left: 0;
-      position: absolute;
-      top: -18px;
-      width: 100%;
-    }
+    left: 0;
+    position: absolute;
+    top: -18px;
+    width: 100%;
   }
 }

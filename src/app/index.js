@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 
-import SignUp from './screens/SignUp';
+import Routes from './components/Routes';
 
 export default function App() {
-  return <SignUp />;
+  return (
+    <Suspense fallback={<div> Loading </div>}>
+      <Routes />
+    </Suspense>
+  );
 }
