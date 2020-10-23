@@ -1,19 +1,23 @@
 @import 'variables/colors';
 
+@import 'variables/zIndex';
+
+@import 'variables/opacity';
+
 .loader-container {
+  background-color: $gray;
+  height: 100vh;
+  left: 0;
+  opacity: $opacity-loader;
   position: fixed;
   top: 0;
-  left: 0;
   width: 100vw;
-  height: 100vh;
-  z-index: 10000;
-  opacity: 0.6;
-  background-color: $gray;
+  z-index: $z-index-loader;
 
   .loader {
+    left: 50%;
     position: absolute;
     top: 50%;
-    left: 50%;
     transform: translate(-50%, -50%);
   }
 }

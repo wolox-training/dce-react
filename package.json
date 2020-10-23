@@ -11,6 +11,7 @@
     "apisauce": "^1.1.2",
     "babel-plugin-module-resolver": "^4.0.0",
     "cerealizr": "^1.0.1-alpha",
+    "classnames": "^2.2.6",
     "i18next": "^19.8.2",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
@@ -19,8 +20,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.4",
     "react-spinkit": "^3.0.0",
-    "wolox-equalizer": "0.0.3",
-    "yup": "^0.29.3"
+    "wolox-equalizer": "0.0.3"
   },
   "scripts": {
     "start": "node ./scripts/start.js development",

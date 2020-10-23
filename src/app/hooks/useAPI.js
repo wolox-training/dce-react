@@ -1,29 +1,30 @@
 import { useState, useEffect, useRef, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
+import { FETCH_ACTIONS, REST_METHODS } from '~constants';
 import api from '~config/api';
 
 const dataFetchReducer = (state, action) => {
   switch (action.type) {
-    case 'FETCH_INIT':
+    case FETCH_ACTIONS.init:
       return {
         ...state,
         isLoading: true,
-        isError: ''
+        isError: false
       };
-    case 'FETCH_SUCCESS':
+    case FETCH_ACTIONS.success:
       return {
         ...state,
         response: action.payload,
         isLoading: false,
-        isError: ''
+        isError: false
       };
-    case 'FETCH_FAILURE':
+    case FETCH_ACTIONS.error:
       return {
         ...state,
         response: action.payload,
         isLoading: false,
-        isError: 'Something Wrong Happened'
+        isError: true
       };
     default:
       return { ...state };
@@ -33,7 +34,7 @@ const dataFetchReducer = (state, action) => {
 const useAPI = (config, initialData = {}, execute = false) => {
   const [state, dispatch] = useReducer(dataFetchReducer, {
     isLoading: false,
-    isError: '',
+    isError: false,
     response: initialData
   });
   const [conf, setConf] = useState(config);
@@ -79,7 +80,7 @@ const useAPI = (config, initialData = {}, execute = false) => {
 
 useAPI.propTypes = {
   config: PropTypes.shape({
-    method: PropTypes.oneOf(['GET', 'HEAD', 'DELETE', 'LINK', 'UNLINK', 'POST', 'PUT', 'PATCH']).isRequired,
+    method: PropTypes.oneOf(REST_METHODS).isRequired,
     url: PropTypes.string.isRequired,
     data: PropTypes.shape({}),
     params: PropTypes.shape({})

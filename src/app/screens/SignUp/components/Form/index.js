@@ -1,55 +1,63 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import i18next from 'i18next';
 import PropTypes from 'prop-types';
 
+import { AUTH_FIELDS } from '~constants/index';
+import { emailValidator, nameValidator, passwordValidator } from '~utils/inputValidators';
 import TextField from '~components/TextField';
-import { signUpSchema } from '~utils/yupvalidators';
 
 export default function Form({ onSubmit }) {
-  const { register, handleSubmit, errors } = useForm({ resolver: yupResolver(signUpSchema) });
+  const { register, handleSubmit, getValues, errors } = useForm();
 
   return (
     <form name="signup" onSubmit={handleSubmit(onSubmit)} className="column m-bottom-6">
       <TextField
         type="text"
-        name="firstName"
-        ref={register}
+        name={AUTH_FIELDS.firstName}
+        ref={register(nameValidator)}
         title={i18next.t('Common:inputName')}
-        error={errors.firstName}
+        error={errors[AUTH_FIELDS.firstName]}
         data-testid="firstName"
       />
       <TextField
         type="text"
-        name="lastName"
-        ref={register}
+        name={AUTH_FIELDS.lastName}
+        ref={register(nameValidator)}
         title={i18next.t('Common:inputLastName')}
-        error={errors.lastName}
+        error={errors[AUTH_FIELDS.lastName]}
         data-testid="lastName"
       />
       <TextField
         type="text"
-        name="email"
-        ref={register}
+        name={AUTH_FIELDS.email}
+        ref={register(emailValidator)}
         title={i18next.t('Common:inputEmail')}
-        error={errors.email}
+        error={errors[AUTH_FIELDS.email]}
         data-testid="email"
       />
       <TextField
         type="password"
-        name="password"
-        ref={register}
+        name={AUTH_FIELDS.password}
+        ref={register(passwordValidator)}
         title={i18next.t('Common:inputPassword')}
-        error={errors.password}
+        error={errors[AUTH_FIELDS.password]}
         data-testid="password"
       />
       <TextField
         type="password"
-        name="confirmPassword"
-        ref={register}
+        name={AUTH_FIELDS.confirmPassword}
+        ref={register({
+          required: i18next.t('Validators:required'),
+          validate: {
+            matchesPreviousPassword: value => {
+              const { password } = getValues();
+              return password === value || i18next.t('Validators:confirmPassword');
+            }
+          }
+        })}
         title={i18next.t('Common:inputConfirmPassword')}
-        error={errors.confirmPassword}
+        error={errors[AUTH_FIELDS.confirmPassword]}
         data-testid="confirmPassword"
       />
       <button type="submit" className="button-primary m-top-1">

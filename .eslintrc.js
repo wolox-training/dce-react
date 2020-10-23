@@ -10,9 +10,10 @@ module.exports = {
           '~assets': './src/app/assets',
           '~components': './src/app/components',
           '~config': './src/config',
+          '~constants': './src/constants',
           '~hooks': './src/app/hooks',
           '~screens': './src/app/screens',
-          '~utils': './src/utils'
+          '~utils': './src/utils',
         },
         extensions: ['.js','.jsx'],
         root: ['./src']
