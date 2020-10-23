@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import i18next from 'i18next';
 import PropTypes from 'prop-types';
 
-import { AUTH_FIELDS } from '~constants/index';
+import { AUTH_FIELDS } from '~constants';
 import { emailValidator, nameValidator, passwordValidator } from '~utils/inputValidators';
 import TextField from '~components/TextField';
 
@@ -11,7 +11,7 @@ export default function Form({ onSubmit }) {
   const { register, handleSubmit, getValues, errors } = useForm();
 
   return (
-    <form name="signup" onSubmit={handleSubmit(onSubmit)} className="column m-bottom-6">
+    <form name="signup" onSubmit={handleSubmit(onSubmit)} className="m-bottom-6">
       <TextField
         type="text"
         name={AUTH_FIELDS.firstName}

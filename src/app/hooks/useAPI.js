@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { FETCH_ACTIONS, REST_METHODS } from '~constants';
 import api from '~config/api';
 
+const success = 201;
+
 const dataFetchReducer = (state, action) => {
   switch (action.type) {
     case FETCH_ACTIONS.init:
@@ -49,11 +51,14 @@ const useAPI = (config, initialData = {}, execute = false) => {
       try {
         const result = await api.any(conf);
         if (!didCancel) {
-          dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
+          dispatch({
+            type: result.status === success ? 'FETCH_SUCCESS' : 'FETCH_FAILURE',
+            payload: result.data
+          });
         }
       } catch (error) {
         if (!didCancel) {
-          dispatch({ type: 'FETCH_FAILURE', payload: error });
+          dispatch({ type: 'FETCH_FAILURE', payload: error.message });
         }
       }
     };

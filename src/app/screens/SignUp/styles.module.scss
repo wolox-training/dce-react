@@ -4,17 +4,3 @@
   display: block;
   margin: 20px auto 16px;
 }
-
-.line {
-  position: relative;
-
-  &::before {
-    border-top: 2px solid $silver-chalice;
-    content: '';
-    display: block;
-    left: 0;
-    position: absolute;
-    top: -18px;
-    width: 100%;
-  }
-}

@@ -9,7 +9,7 @@ export const AUTH_FIELDS = {
 export const FETCH_ACTIONS = {
   init: 'FETCH_INIT',
   success: 'FETCH_SUCCESS',
-  error: 'FETCH_ERROR'
+  error: 'FETCH_FAILURE'
 };
 
 export const REST_METHODS = ['GET', 'HEAD', 'DELETE', 'LINK', 'UNLINK', 'POST', 'PUT', 'PATCH'];

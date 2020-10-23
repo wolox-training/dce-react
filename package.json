@@ -20,6 +20,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.4",
     "react-spinkit": "^3.0.0",
+    "react-toast-notifications": "^2.4.0",
     "wolox-equalizer": "0.0.3"
   },
   "scripts": {
