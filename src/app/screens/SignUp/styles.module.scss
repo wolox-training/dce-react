@@ -8,7 +8,6 @@
   padding: 0 25px 24px;
 
   .image {
-    display: block;
     margin: 20px auto 16px;
   }
 
@@ -18,7 +17,6 @@
     &::before {
       border-top: 2px solid $silver-chalice;
       content: '';
-      display: block;
       left: 0;
       position: absolute;
       top: -18px;

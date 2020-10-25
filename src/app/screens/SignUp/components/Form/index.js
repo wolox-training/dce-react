@@ -5,8 +5,13 @@ import i18next from 'i18next';
 import TextField from '~components/TextField';
 import Loader from '~components/Loader';
 import useAPI from '~hooks/useAPI';
-import { AUTH_FIELDS } from '~constants/index';
-import { emailValidator, nameValidator, passwordValidator } from '~utils/inputValidators';
+import { AUTH_FIELDS } from '~constants/fields';
+import {
+  emailValidator,
+  nameValidator,
+  passwordValidator,
+  confirmPasswordValidator
+} from '~utils/inputValidators';
 
 export default function Form() {
   const { register, handleSubmit, getValues, errors } = useForm();
@@ -14,6 +19,7 @@ export default function Form() {
     url: '/users',
     method: 'POST'
   });
+  const { password } = getValues();
 
   console.log(isLoading, isError, response);
 
@@ -32,43 +38,35 @@ export default function Form() {
       <TextField
         type="text"
         name={AUTH_FIELDS.firstName}
-        ref={register(nameValidator)}
+        customRef={register(nameValidator)}
         title={i18next.t('Common:inputName')}
         error={errors[AUTH_FIELDS.firstName]}
       />
       <TextField
         type="text"
         name={AUTH_FIELDS.lastName}
-        ref={register(nameValidator)}
+        customRef={register(nameValidator)}
         title={i18next.t('Common:inputLastName')}
         error={errors[AUTH_FIELDS.lastName]}
       />
       <TextField
         type="text"
         name={AUTH_FIELDS.email}
-        ref={register(emailValidator)}
+        customRef={register(emailValidator)}
         title={i18next.t('Common:inputEmail')}
         error={errors[AUTH_FIELDS.email]}
       />
       <TextField
         type="password"
         name={AUTH_FIELDS.password}
-        ref={register(passwordValidator)}
+        customRef={register(passwordValidator)}
         title={i18next.t('Common:inputPassword')}
         error={errors[AUTH_FIELDS.password]}
       />
       <TextField
         type="password"
         name={AUTH_FIELDS.confirmPassword}
-        ref={register({
-          required: i18next.t('Validators:required'),
-          validate: {
-            matchesPreviousPassword: value => {
-              const { password } = getValues();
-              return password === value || i18next.t('Validators:confirmPassword');
-            }
-          }
-        })}
+        customRef={register(confirmPasswordValidator(password))}
         title={i18next.t('Common:inputConfirmPassword')}
         error={errors[AUTH_FIELDS.confirmPassword]}
       />
