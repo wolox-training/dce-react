@@ -31,3 +31,10 @@ export const passwordValidator = {
     message: i18next.t('Validators:password')
   }
 };
+
+export const confirmPasswordValidator = password => ({
+  required: required(),
+  validate: {
+    matchesPreviousPassword: value => password === value || i18next.t('Validators:confirmPassword')
+  }
+});

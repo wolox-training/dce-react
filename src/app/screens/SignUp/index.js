@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import i18next from 'i18next';
 import PropTypes from 'prop-types';
 import { useToasts } from 'react-toast-notifications';
+import clsx from 'clsx';
 
 import useAPI from '~hooks/useAPI';
 import Loader from '~components/Loader';
@@ -42,7 +43,7 @@ export default function SignUp({ history }) {
   return (
     <PublicLayout>
       {isLoading && <Loader />}
-      <img src={wolox} alt="wolox" className={styles.image} />
+      <img src={wolox} alt="wolox" className={clsx('row', styles.image)} />
       <Form onSubmit={onSubmit} />
       <button
         type="button"

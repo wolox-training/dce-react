@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
-import { FETCH_ACTIONS, REST_METHODS } from '~constants';
+import { FETCH_ACTIONS } from '~constants/actions';
+import { REST_METHODS } from '~constants/api';
 import api from '~config/api';
 
 const success = 201;
@@ -46,19 +47,19 @@ const useAPI = (config, initialData = {}, execute = false) => {
   useEffect(() => {
     let didCancel = false;
     const fetchData = async () => {
-      dispatch({ type: 'FETCH_INIT' });
+      dispatch({ type: FETCH_ACTIONS.init });
 
       try {
         const result = await api.any(conf);
         if (!didCancel) {
           dispatch({
-            type: result.status === success ? 'FETCH_SUCCESS' : 'FETCH_FAILURE',
+            type: result.status === success ? FETCH_ACTIONS.success : FETCH_ACTIONS.error,
             payload: result.data
           });
         }
       } catch (error) {
         if (!didCancel) {
-          dispatch({ type: 'FETCH_FAILURE', payload: error.message });
+          dispatch({ type: FETCH_ACTIONS.error, payload: error.message });
         }
       }
     };
