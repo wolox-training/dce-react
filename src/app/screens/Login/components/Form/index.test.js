@@ -5,7 +5,7 @@ import Form from './index';
 
 const onSubmit = jest.fn();
 
-describe('signout form', () => {
+describe('login form', () => {
   beforeEach(() => {
     render(<Form onSubmit={onSubmit} />);
   });
@@ -31,18 +31,12 @@ describe('signout form', () => {
   });
 
   test('submit the form correctly', async () => {
-    fireEvent.input(screen.getByTestId('firstName'), { target: { value: 'Diego' } });
-    fireEvent.input(screen.getByTestId('lastName'), { target: { value: 'Celis' } });
     fireEvent.input(screen.getByTestId('email'), { target: { value: 'diego.celis@wolox.co' } });
     fireEvent.input(screen.getByTestId('password'), { target: { value: 'Test1234' } });
-    fireEvent.input(screen.getByTestId('confirmPassword'), { target: { value: 'Test1234' } });
 
     expect(screen.getByRole('form')).toHaveFormValues({
-      firstName: 'Diego',
-      lastName: 'Celis',
       email: 'diego.celis@wolox.co',
-      password: 'Test1234',
-      confirmPassword: 'Test1234'
+      password: 'Test1234'
     });
 
     fireEvent.submit(screen.getByRole('button'));

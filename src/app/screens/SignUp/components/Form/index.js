@@ -1,5 +1,5 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import i18next from 'i18next';
 import PropTypes from 'prop-types';
 
@@ -13,8 +13,11 @@ import {
 } from '~utils/inputValidators';
 
 export default function Form({ onSubmit }) {
-  const { register, handleSubmit, getValues, errors } = useForm();
-  const { password } = getValues();
+  const { control, register, handleSubmit, errors } = useForm();
+  const password = useWatch({
+    control,
+    name: AUTH_FIELDS.confirmPassword
+  });
 
   return (
     <form name="signup" onSubmit={handleSubmit(onSubmit)} className="m-bottom-6">
@@ -35,7 +38,7 @@ export default function Form({ onSubmit }) {
         data-testid="lastName"
       />
       <TextField
-        type="text"
+        type="email"
         name={AUTH_FIELDS.email}
         customRef={register(emailValidator)}
         title={i18next.t('Common:inputEmail')}

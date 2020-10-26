@@ -4,7 +4,7 @@ import i18next from 'i18next';
 import PropTypes from 'prop-types';
 
 import TextField from '~components/TextField';
-import { AUTH_FIELDS } from '~constants';
+import { AUTH_FIELDS } from '~constants/fields';
 import { emailValidator, passwordValidator } from '~utils/inputValidators';
 
 export default function Form({ onSubmit }) {
@@ -15,7 +15,7 @@ export default function Form({ onSubmit }) {
       <TextField
         type="text"
         name={AUTH_FIELDS.email}
-        ref={register(emailValidator)}
+        customRef={register(emailValidator)}
         title={i18next.t('Common:inputEmail')}
         error={errors[AUTH_FIELDS.email]}
         data-testid="email"
@@ -23,7 +23,7 @@ export default function Form({ onSubmit }) {
       <TextField
         type="password"
         name={AUTH_FIELDS.password}
-        ref={register(passwordValidator)}
+        customRef={register(passwordValidator)}
         title={i18next.t('Common:inputPassword')}
         error={errors[AUTH_FIELDS.password]}
         data-testid="password"

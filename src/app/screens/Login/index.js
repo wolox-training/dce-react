@@ -2,11 +2,14 @@ import React, { useEffect } from 'react';
 import i18next from 'i18next';
 import PropTypes from 'prop-types';
 import { useToasts } from 'react-toast-notifications';
+import clsx from 'clsx';
 
 import useAPI from '~hooks/useAPI';
 import Loader from '~components/Loader';
-import wolox from '~assets/logos/wolox.png';
 import PublicLayout from '~components/PublicLayout';
+import { ENDPOINTS } from '~constants/api';
+
+import wolox from '../../assets/logos/wolox.png';
 
 import Form from './components/Form';
 import styles from './styles.module.scss';
@@ -14,7 +17,7 @@ import styles from './styles.module.scss';
 export default function Login({ history }) {
   const { addToast } = useToasts();
   const [{ isLoading, isError, response }, doFetch] = useAPI({
-    url: '/users',
+    url: ENDPOINTS.login,
     method: 'POST'
   });
 
@@ -23,7 +26,7 @@ export default function Login({ history }) {
       if (isError) {
         addToast(response, { appearance: 'error' });
       } else {
-        console.log('se logueo con exito');
+        console.log('se logueo con exito', response);
       }
     }
   }, [addToast, isError, response, history]);
@@ -31,9 +34,8 @@ export default function Login({ history }) {
   const onSubmit = data => {
     doFetch({
       data: {
-        user: {
-          ...data,
-          locale: 'en'
+        session: {
+          ...data
         }
       }
     });
@@ -42,7 +44,7 @@ export default function Login({ history }) {
   return (
     <PublicLayout>
       {isLoading && <Loader />}
-      <img src={wolox} alt="wolox" className={styles.image} />
+      <img src={wolox} alt="wolox" className={clsx('row', styles.image)} />
       <Form onSubmit={onSubmit} />
       <button
         type="button"

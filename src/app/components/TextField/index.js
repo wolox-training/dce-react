@@ -13,7 +13,9 @@ function TextField({ title, inputVariant, error, customRef, ...rest }) {
         className={clsx('full-width', styles.textField, inputVariant, { 'input-error': !!error })}
         {...rest}
       />
-      <label className={clsx('text-error row', styles.error, { hidden: !error })}>{error?.message}</label>
+      <label role="alert" className={clsx('text-error row', styles.error, { hidden: !error })}>
+        {error?.message}
+      </label>
     </div>
   );
 }

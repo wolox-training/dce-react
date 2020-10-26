@@ -7,7 +7,9 @@ import clsx from 'clsx';
 import useAPI from '~hooks/useAPI';
 import Loader from '~components/Loader';
 import PublicLayout from '~components/PublicLayout';
-import wolox from '~assets/logos/wolox.png';
+import { ENDPOINTS } from '~constants/api';
+
+import wolox from '../../assets/logos/wolox.png';
 
 import Form from './components/Form';
 import styles from './styles.module.scss';
@@ -15,7 +17,7 @@ import styles from './styles.module.scss';
 export default function SignUp({ history }) {
   const { addToast } = useToasts();
   const [{ isLoading, isError, response }, doFetch] = useAPI({
-    url: '/users',
+    url: ENDPOINTS.signUp,
     method: 'POST'
   });
 
@@ -51,6 +53,7 @@ export default function SignUp({ history }) {
         onClick={() => {
           history.push('/login');
         }}
+        data-testid="login-button"
       >
         {i18next.t('Common:buttonLogin')}
       </button>

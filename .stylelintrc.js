@@ -7,7 +7,6 @@ module.exports = {
     }],
     'scss/no-duplicate-dollar-variables': [ true, {
       ignoreInsideAtRules: ['if', 'mixin', 'media']
-    }],
-    'plugin/stylelint-no-indistinguishable-colors': false
+    }]
   }
 };
