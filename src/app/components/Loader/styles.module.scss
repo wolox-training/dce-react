@@ -1,0 +1,21 @@
+@import 'variables/colors';
+
+@import 'variables/variables';
+
+.loader-container {
+  background-color: $gray;
+  height: 100vh;
+  left: 0;
+  opacity: $opacity-loader;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: $z-index-loader;
+
+  .loader {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

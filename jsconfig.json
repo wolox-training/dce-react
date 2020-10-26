@@ -4,7 +4,17 @@
     "module": "commonjs",
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "paths": {
+      "~app/*": ["app/*"],
+      "~components/*": ["app/components/*"],
+      "~screens/*": ["app/screens/*"],
+      "~hooks/*": ["app/hooks/*"],
+      "~assets/*": ["app/assets/*"],
+      "~config/*": ["config/*"],
+      "~utils/*": ["utils/*"],
+      "~constants/*": ["constants/*"]
+    }
   },
   "include": [
     "src"

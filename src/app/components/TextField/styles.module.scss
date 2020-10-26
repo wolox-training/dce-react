@@ -1,0 +1,23 @@
+@import 'variables/colors';
+
+.textfield-container {
+  .title {
+    color: $black;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 8px;
+  }
+
+  .text-field {
+    border-radius: 5px;
+    background-color: $white;
+    height: 32px;
+    padding: 0 10px;
+  }
+
+  .error {
+    height: 20px;
+    font-size: 10px;
+    font-style: italic;
+  }
+}
