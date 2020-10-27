@@ -25,7 +25,7 @@ export default function SignUp({ history }) {
   );
 
   const handleLogin = useCallback(() => {
-    history.push(ROUTES.login);
+    history.push(ROUTES.base);
   }, [history]);
 
   useEffect(() => {

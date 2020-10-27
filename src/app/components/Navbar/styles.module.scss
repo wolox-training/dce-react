@@ -1,19 +1,19 @@
 @import 'variables/colors';
 
 .container {
-  height: 70px;
   border-top: 6px solid $cerulean;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5);
+  height: 70px;
 
   .content {
     height: 100%;
-    max-width: 874px;
     margin: 0 auto;
+    max-width: 874px;
 
     .logout-button {
+      color: $black;
       font-size: 18px;
       line-height: 21px;
-      color: $black;
     }
   }
 }

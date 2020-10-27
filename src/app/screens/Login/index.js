@@ -8,6 +8,7 @@ import useAPI from '~hooks/useAPI';
 import Loader from '~components/Loader';
 import PublicLayoutWrapper from '~components/PublicLayoutWrapper';
 import { ENDPOINTS } from '~constants/api';
+import ROUTES from '~constants/routes';
 import { saveStorage } from '~utils/storage';
 import wolox from '~assets/logos/wolox.png';
 
@@ -25,7 +26,7 @@ export default function Login({ history }) {
   );
 
   const handleSignUp = useCallback(() => {
-    history.push('/home');
+    history.push(ROUTES.signUp);
   }, [history]);
 
   useEffect(() => {
@@ -34,7 +35,7 @@ export default function Login({ history }) {
         addToast(response, { appearance: 'error' });
       } else {
         saveStorage(response.accessToken, 'accessToken');
-        handleSignUp();
+        history.go();
       }
     }
   }, [addToast, handleSignUp, history, isError, response]);
@@ -42,9 +43,7 @@ export default function Login({ history }) {
   const onSubmit = data => {
     doFetch({
       data: {
-        session: {
-          ...data
-        }
+        session: data
       }
     });
   };
@@ -63,6 +62,7 @@ export default function Login({ history }) {
 
 Login.propTypes = {
   history: PropTypes.shape({
+    go: PropTypes.func,
     push: PropTypes.func
   })
 };

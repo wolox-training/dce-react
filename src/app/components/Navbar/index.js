@@ -3,8 +3,8 @@ import clsx from 'clsx';
 import { useHistory } from 'react-router-dom';
 
 import { removeStorage } from '~utils/storage';
-
-import wolox from '../../assets/logos/wolox.png';
+import ROUTES from '~constants/routes';
+import wolox from '~assets/logos/wolox.png';
 
 import styles from './styles.module.scss';
 
@@ -13,7 +13,8 @@ export default function Navbar() {
 
   const handleSignOut = () => {
     removeStorage('accessToken');
-    history.push('/login');
+    history.push(ROUTES.base);
+    history.go();
   };
 
   return (
