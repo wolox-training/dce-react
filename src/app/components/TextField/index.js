@@ -6,7 +6,7 @@ import styles from './styles.module.scss';
 
 function TextField({ title, inputVariant, error, customRef, ...rest }) {
   return (
-    <div className={styles.textfieldContainer}>
+    <div className={styles.container}>
       <label className={clsx('row', styles.title)}> {title} </label>
       <input
         ref={customRef}

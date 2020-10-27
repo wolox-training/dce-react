@@ -91,10 +91,11 @@
   "title": "dce-react",
   "jest": {
     "moduleNameMapper": {
-      "~screens(.*)": "<rootDir>/src/app/screens/$1",
+      "~assets(.*)": "<rootDir>/src/app/assets/$1",
       "~components(.*)": "<rootDir>/src/app/components/$1",
-      "~hooks(.*)": "<rootDir>/src/app/hooks/$1",
       "~contexts(.*)": "<rootDir>/src/app/contexts/$1",
+      "~hooks(.*)": "<rootDir>/src/app/hooks/$1",
+      "~screens(.*)": "<rootDir>/src/app/screens/$1",
       "^~(.*)/(.*)$": "<rootDir>/src/$1/$2"
     },
     "snapshotSerializers": [

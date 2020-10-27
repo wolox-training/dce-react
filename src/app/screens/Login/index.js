@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import i18next from 'i18next';
 import PropTypes from 'prop-types';
 import { useToasts } from 'react-toast-notifications';
@@ -6,30 +6,37 @@ import clsx from 'clsx';
 
 import useAPI from '~hooks/useAPI';
 import Loader from '~components/Loader';
-import PublicLayout from '~components/PublicLayout';
+import PublicLayoutWrapper from '~components/PublicLayoutWrapper';
 import { ENDPOINTS } from '~constants/api';
-
-import wolox from '../../assets/logos/wolox.png';
+import wolox from '~assets/logos/wolox.png';
 
 import Form from './components/Form';
 import styles from './styles.module.scss';
 
 export default function Login({ history }) {
   const { addToast } = useToasts();
-  const [{ isLoading, isError, response }, doFetch] = useAPI({
-    url: ENDPOINTS.login,
-    method: 'POST'
-  });
+  const [{ isLoading, isError, response }, doFetch] = useAPI(
+    {
+      url: ENDPOINTS.login,
+      method: 'POST'
+    },
+    null
+  );
+
+  const handleSignUp = useCallback(() => {
+    // eslint-disable-next-line no-console
+    console.log('se logueo con exito', response);
+  }, [response]);
 
   useEffect(() => {
-    if (Object.keys(response).length > 0) {
+    if (response) {
       if (isError) {
         addToast(response, { appearance: 'error' });
       } else {
-        console.log('se logueo con exito', response);
+        handleSignUp();
       }
     }
-  }, [addToast, isError, response, history]);
+  }, [addToast, isError, response, history, handleSignUp]);
 
   const onSubmit = data => {
     doFetch({
@@ -42,20 +49,14 @@ export default function Login({ history }) {
   };
 
   return (
-    <PublicLayout>
+    <PublicLayoutWrapper>
       {isLoading && <Loader />}
       <img src={wolox} alt="wolox" className={clsx('row', styles.image)} />
       <Form onSubmit={onSubmit} />
-      <button
-        type="button"
-        className="m-bottom-3 button-secondary line"
-        onClick={() => {
-          history.push('/sign-up');
-        }}
-      >
+      <button type="button" className="m-bottom-3 button-secondary line" onClick={handleSignUp}>
         {i18next.t('Common:buttonSignUp')}
       </button>
-    </PublicLayout>
+    </PublicLayoutWrapper>
   );
 }
 

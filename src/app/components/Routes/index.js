@@ -12,7 +12,7 @@ function Routes() {
       <Switch>
         <Route exact path={ROUTES.signUp} component={SignUp} />
         <Route exact path={ROUTES.login} component={Login} />
-        <Redirect to={ROUTES.signUp} />
+        <Redirect to={ROUTES.login} />
       </Switch>
     </BrowserRouter>
   );

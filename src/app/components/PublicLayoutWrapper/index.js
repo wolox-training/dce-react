@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
 
 export default function PublicLayout({ children }) {
-  return <div className={styles.publicLayout}>{children}</div>;
+  return <div className={styles.container}>{children}</div>;
 }
 
 PublicLayout.propTypes = {
