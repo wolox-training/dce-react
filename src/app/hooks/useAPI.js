@@ -5,7 +5,8 @@ import { FETCH_ACTIONS } from '~constants/actions';
 import { REST_METHODS } from '~constants/api';
 import api from '~config/api';
 
-const success = 201;
+//  eslint-disable-next-line
+const success = [200, 201];
 
 const dataFetchReducer = (state, action) => {
   switch (action.type) {
@@ -53,7 +54,7 @@ const useAPI = (config, initialData = {}, execute = false) => {
         const result = await api.any(conf);
         if (!didCancel) {
           dispatch({
-            type: result.status === success ? FETCH_ACTIONS.success : FETCH_ACTIONS.error,
+            type: success.includes(result.status) ? FETCH_ACTIONS.success : FETCH_ACTIONS.error,
             payload: result.data
           });
         }

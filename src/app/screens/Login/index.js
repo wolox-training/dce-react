@@ -8,6 +8,7 @@ import useAPI from '~hooks/useAPI';
 import Loader from '~components/Loader';
 import PublicLayout from '~components/PublicLayout';
 import { ENDPOINTS } from '~constants/api';
+import { saveStorage } from '~utils/storage';
 
 import wolox from '../../assets/logos/wolox.png';
 
@@ -26,10 +27,11 @@ export default function Login({ history }) {
       if (isError) {
         addToast(response, { appearance: 'error' });
       } else {
-        console.log('se logueo con exito', response);
+        saveStorage(response.accessToken, 'accessToken');
+        history.push('/home');
       }
     }
-  }, [addToast, isError, response, history]);
+  }, [addToast, history, isError, response]);
 
   const onSubmit = data => {
     doFetch({
