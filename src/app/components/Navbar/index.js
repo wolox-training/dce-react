@@ -12,13 +12,12 @@ export default function Navbar() {
   const history = useHistory();
 
   const handleSignOut = () => {
-    console.log('cerro session');
     removeStorage('accessToken');
     history.push('/login');
   };
 
   return (
-    <div className={styles.navbar}>
+    <div className={styles.container}>
       <div className={clsx('row space-between middle', styles.content)}>
         <img src={wolox} alt="wolox" className="" />
         <button className={styles.logoutButton} type="button" onClick={handleSignOut}>
