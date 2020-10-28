@@ -4,29 +4,29 @@ import PropTypes from 'prop-types';
 import { useToasts } from 'react-toast-notifications';
 import clsx from 'clsx';
 
-import wolox from '~assets/logos/wolox.png';
 import useAPI from '~hooks/useAPI';
 import Loader from '~components/Loader';
 import PublicLayoutWrapper from '~components/PublicLayoutWrapper';
 import { ENDPOINTS } from '~constants/api';
 import { TOAST_TYPES } from '~constants/notifications';
+import wolox from '~assets/logos/wolox.png';
 import ROUTES from '~constants/routes';
 
 import Form from './components/Form';
 import styles from './styles.module.scss';
 
-export default function SignUp({ history }) {
+export default function Login({ history }) {
   const { addToast } = useToasts();
   const [{ isLoading, isError, response }, doFetch] = useAPI(
     {
-      url: ENDPOINTS.signUp,
+      url: ENDPOINTS.login,
       method: 'POST'
     },
     null
   );
 
-  const handleLogin = useCallback(() => {
-    history.push(ROUTES.login);
+  const handleSignUp = useCallback(() => {
+    history.push(ROUTES.signUp);
   }, [history]);
 
   useEffect(() => {
@@ -34,18 +34,16 @@ export default function SignUp({ history }) {
       if (isError) {
         addToast(response, { appearance: TOAST_TYPES.error });
       } else {
-        handleLogin();
+        // eslint-disable-next-line no-console
+        console.log('se logueo con exito');
       }
     }
-  }, [addToast, isError, response, history, handleLogin]);
+  }, [addToast, isError, response]);
 
   const onSubmit = data => {
     doFetch({
       data: {
-        user: {
-          ...data,
-          locale: 'en'
-        }
+        session: data
       }
     });
   };
@@ -55,14 +53,14 @@ export default function SignUp({ history }) {
       {isLoading && <Loader />}
       <img src={wolox} alt="wolox" className={clsx('row', styles.image)} />
       <Form onSubmit={onSubmit} />
-      <button type="button" className="m-bottom-3 button-secondary line" onClick={handleLogin}>
-        {i18next.t('Common:buttonLogin')}
+      <button type="button" className="m-bottom-3 button-secondary line" onClick={handleSignUp}>
+        {i18next.t('Common:buttonSignUp')}
       </button>
     </PublicLayoutWrapper>
   );
 }
 
-SignUp.propTypes = {
+Login.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func
   })

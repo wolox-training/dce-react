@@ -52,3 +52,16 @@
   background-color: transparent;
   color: $earls-green;
 }
+
+.line {
+  position: relative;
+
+  &::before {
+    border-top: 2px solid $silver-chalice;
+    content: '';
+    left: 0;
+    position: absolute;
+    top: -18px;
+    width: 100%;
+  }
+}

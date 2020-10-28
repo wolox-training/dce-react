@@ -7,13 +7,13 @@
     "baseUrl": "src",
     "paths": {
       "~app/*": ["app/*"],
-      "~components/*": ["app/components/*"],
-      "~screens/*": ["app/screens/*"],
-      "~hooks/*": ["app/hooks/*"],
       "~assets/*": ["app/assets/*"],
+      "~components/*": ["app/components/*"],
       "~config/*": ["config/*"],
-      "~utils/*": ["utils/*"],
-      "~constants/*": ["constants/*"]
+      "~constants/*": ["constants/*"],
+      "~hooks/*": ["app/hooks/*"],
+      "~screens/*": ["app/screens/*"],
+      "~utils/*": ["utils/*"]
     }
   },
   "include": [

@@ -50,7 +50,10 @@ const useAPI = (config, initialData = {}, execute = false) => {
       try {
         const result = await api.any(conf);
         if (!didCancel) {
-          dispatch({ type: FETCH_ACTIONS.success, payload: result.data });
+          dispatch({
+            type: result.ok ? FETCH_ACTIONS.success : FETCH_ACTIONS.error,
+            payload: result.data
+          });
         }
       } catch (error) {
         if (!didCancel) {

@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
+    "@testing-library/dom": "^7.26.3",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
     "apisauce": "^1.1.2",
     "babel-plugin-module-resolver": "^4.0.0",
     "cerealizr": "^1.0.1-alpha",
@@ -15,15 +16,17 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.9.4",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.4",
     "react-spinkit": "^3.0.0",
+    "react-toast-notifications": "^2.4.0",
     "wolox-equalizer": "0.0.3"
   },
   "scripts": {
     "start": "node ./scripts/start.js development",
     "start-env": "node ./scripts/start.js",
     "build": "node ./scripts/build.js",
-    "test": "rescripts test --env=jsdom",
+    "test": "rescripts test --env=jest-environment-jsdom-sixteen",
     "eject": "./node_modules/react-scripts/bin/react-scripts.js eject",
     "lint": "./node_modules/eslint/bin/eslint.js src",
     "lint-fix": "./node_modules/eslint/bin/eslint.js src --fix && ./node_modules/stylelint/bin/stylelint.js '**/*.scss' --fix",
@@ -67,7 +70,9 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.3",
     "husky": "^4.3.0",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "minimist": "^1.2.5",
+    "msw": "^0.21.3",
     "postcss": "^7.0.35",
     "postcss-html": "^0.36.0",
     "postcss-syntax": "^0.36.2",
@@ -80,16 +85,17 @@
     "react-test-renderer": "^16.13.1",
     "stylelint": "^9.10.1",
     "stylelint-config-wolox": "^1.0.7",
-    "stylelint-no-indistinguishable-colors": "^1.2.1",
+    "stylelint-no-indistinguishable-colors": "^1.3.0",
     "stylelint-scss": "^3.5.4"
   },
   "title": "dce-react",
   "jest": {
     "moduleNameMapper": {
-      "~screens(.*)": "<rootDir>/src/app/screens/$1",
+      "~assets(.*)": "<rootDir>/src/app/assets/$1",
       "~components(.*)": "<rootDir>/src/app/components/$1",
-      "~hooks(.*)": "<rootDir>/src/app/hooks/$1",
       "~contexts(.*)": "<rootDir>/src/app/contexts/$1",
+      "~hooks(.*)": "<rootDir>/src/app/hooks/$1",
+      "~screens(.*)": "<rootDir>/src/app/screens/$1",
       "^~(.*)/(.*)$": "<rootDir>/src/$1/$2"
     },
     "snapshotSerializers": [

@@ -1,10 +1,9 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import i18next from 'i18next';
+import PropTypes from 'prop-types';
 
 import TextField from '~components/TextField';
-import Loader from '~components/Loader';
-import useAPI from '~hooks/useAPI';
 import { AUTH_FIELDS } from '~constants/fields';
 import {
   emailValidator,
@@ -13,34 +12,22 @@ import {
   confirmPasswordValidator
 } from '~utils/inputValidators';
 
-export default function Form() {
-  const { register, handleSubmit, getValues, errors } = useForm();
-  const [{ isLoading, isError, response }, doFetch] = useAPI({
-    url: '/users',
-    method: 'POST'
+export default function Form({ onSubmit }) {
+  const { control, register, handleSubmit, errors } = useForm();
+  const password = useWatch({
+    control,
+    name: AUTH_FIELDS.confirmPassword
   });
-  const { password } = getValues();
 
-  console.log(isLoading, isError, response);
-
-  const onSubmit = data => {
-    doFetch({
-      data: {
-        user: {
-          ...data,
-          locale: 'en'
-        }
-      }
-    });
-  };
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="column m-bottom-6">
+    <form name="signup" onSubmit={handleSubmit(onSubmit)} className="m-bottom-6">
       <TextField
         type="text"
         name={AUTH_FIELDS.firstName}
         customRef={register(nameValidator)}
         title={i18next.t('Common:inputName')}
         error={errors[AUTH_FIELDS.firstName]}
+        data-testid="firstName"
       />
       <TextField
         type="text"
@@ -48,13 +35,15 @@ export default function Form() {
         customRef={register(nameValidator)}
         title={i18next.t('Common:inputLastName')}
         error={errors[AUTH_FIELDS.lastName]}
+        data-testid="lastName"
       />
       <TextField
-        type="text"
+        type="email"
         name={AUTH_FIELDS.email}
         customRef={register(emailValidator)}
         title={i18next.t('Common:inputEmail')}
         error={errors[AUTH_FIELDS.email]}
+        data-testid="email"
       />
       <TextField
         type="password"
@@ -62,6 +51,7 @@ export default function Form() {
         customRef={register(passwordValidator)}
         title={i18next.t('Common:inputPassword')}
         error={errors[AUTH_FIELDS.password]}
+        data-testid="password"
       />
       <TextField
         type="password"
@@ -69,11 +59,15 @@ export default function Form() {
         customRef={register(confirmPasswordValidator(password))}
         title={i18next.t('Common:inputConfirmPassword')}
         error={errors[AUTH_FIELDS.confirmPassword]}
+        data-testid="confirmPassword"
       />
       <button type="submit" className="button-primary m-top-1">
         {i18next.t('Common:buttonSignUp')}
       </button>
-      {isLoading && <Loader />}
     </form>
   );
 }
+
+Form.propTypes = {
+  onSubmit: PropTypes.func
+};

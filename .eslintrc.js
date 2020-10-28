@@ -7,13 +7,13 @@ module.exports = {
     'import/resolver': {
       'babel-module': {
         alias: {
-          '~components': './src/app/components',
-          '~screens': './src/app/screens',
-          '~hooks': './src/app/hooks',
           '~assets': './src/app/assets',
+          '~components': './src/app/components',
           '~config': './src/config',
+          '~constants': './src/constants',
+          '~hooks': './src/app/hooks',
+          '~screens': './src/app/screens',
           '~utils': './src/utils',
-          '~constants': './src/constants'
         },
         extensions: ['.js','.jsx'],
         root: ['./src']

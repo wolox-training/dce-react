@@ -1,0 +1,9 @@
+@import 'variables/colors';
+
+.container {
+  background-color: $wild-sand;
+  border-top: 8px solid $cerulean;
+  margin: 0 auto;
+  width: 300px;
+  padding: 0 25px 24px;
+}
