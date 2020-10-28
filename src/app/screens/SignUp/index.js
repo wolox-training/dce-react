@@ -31,7 +31,7 @@ export default function SignUp({ history }) {
   useEffect(() => {
     if (response) {
       if (isError) {
-        addToast(response, { appearance: 'error' });
+        addToast(response.data?.errors?.fullMessages, { appearance: 'error' });
       } else {
         handleLogin();
       }
@@ -41,10 +41,8 @@ export default function SignUp({ history }) {
   const onSubmit = data => {
     doFetch({
       data: {
-        user: {
-          ...data,
-          locale: 'en'
-        }
+        ...data,
+        locale: 'en'
       }
     });
   };

@@ -32,19 +32,19 @@ export default function Login({ history }) {
   useEffect(() => {
     if (response) {
       if (isError) {
-        addToast(response, { appearance: 'error' });
+        addToast(response.data?.error, { appearance: 'error' });
       } else {
-        saveStorage(response.accessToken, 'accessToken');
+        saveStorage(response.headers.accessToken, 'accessToken');
+        saveStorage(response.headers.client, 'client');
+        saveStorage(response.headers.uid, 'uid');
         history.go();
       }
     }
-  }, [addToast, handleSignUp, history, isError, response]);
+  }, [addToast, history, isError, response]);
 
   const onSubmit = data => {
     doFetch({
-      data: {
-        session: data
-      }
+      data
     });
   };
 

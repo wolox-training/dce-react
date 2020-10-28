@@ -1,9 +1,11 @@
 @import 'variables/colors';
+@import 'variables/variables';
 
 .container {
   border-top: 6px solid $cerulean;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5);
   height: 70px;
+  z-index: $z-index-navbar;
 
   .content {
     height: 100%;
