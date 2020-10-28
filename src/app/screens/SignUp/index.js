@@ -9,6 +9,7 @@ import useAPI from '~hooks/useAPI';
 import Loader from '~components/Loader';
 import PublicLayoutWrapper from '~components/PublicLayoutWrapper';
 import { ENDPOINTS } from '~constants/api';
+import { TOAST_TYPES } from '~constants/notifications';
 import ROUTES from '~constants/routes';
 
 import Form from './components/Form';
@@ -31,7 +32,7 @@ export default function SignUp({ history }) {
   useEffect(() => {
     if (response) {
       if (isError) {
-        addToast(response, { appearance: 'error' });
+        addToast(response, { appearance: TOAST_TYPES.error });
       } else {
         handleLogin();
       }

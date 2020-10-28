@@ -8,7 +8,9 @@ import useAPI from '~hooks/useAPI';
 import Loader from '~components/Loader';
 import PublicLayoutWrapper from '~components/PublicLayoutWrapper';
 import { ENDPOINTS } from '~constants/api';
+import { TOAST_TYPES } from '~constants/notifications';
 import wolox from '~assets/logos/wolox.png';
+import ROUTES from '~constants/routes';
 
 import Form from './components/Form';
 import styles from './styles.module.scss';
@@ -24,26 +26,24 @@ export default function Login({ history }) {
   );
 
   const handleSignUp = useCallback(() => {
-    // eslint-disable-next-line no-console
-    console.log('se logueo con exito', response);
-  }, [response]);
+    history.push(ROUTES.signUp);
+  }, [history]);
 
   useEffect(() => {
     if (response) {
       if (isError) {
-        addToast(response, { appearance: 'error' });
+        addToast(response, { appearance: TOAST_TYPES.error });
       } else {
-        handleSignUp();
+        // eslint-disable-next-line no-console
+        console.log('se logueo con exito');
       }
     }
-  }, [addToast, isError, response, history, handleSignUp]);
+  }, [addToast, isError, response]);
 
   const onSubmit = data => {
     doFetch({
       data: {
-        session: {
-          ...data
-        }
+        session: data
       }
     });
   };
