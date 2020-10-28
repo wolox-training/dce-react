@@ -31,9 +31,9 @@ export const passwordValidator = {
   }
 };
 
-export const confirmPasswordValidator = password => ({
+export const passwordConfirmationValidator = password => ({
   required: required(),
   validate: {
-    matchesPreviousPassword: value => password === value || i18next.t('Validators:confirmPassword')
+    matchesPreviousPassword: value => password === value || i18next.t('Validators:passwordConfirmation')
   }
 });
