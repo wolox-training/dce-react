@@ -1,8 +1,8 @@
 import React, { lazy } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
+import { useAuth } from '~contexts/AuthContext';
 import ROUTES from '~constants/routes';
-import { loadStorage } from '~utils/storage';
 
 import CustomRoute from './components/CustomRoute';
 
@@ -11,7 +11,7 @@ const Login = lazy(() => import('~screens/Login'));
 const Home = lazy(() => import('~screens/Home'));
 
 function Routes() {
-  const token = loadStorage('accessToken');
+  const { auth } = useAuth();
 
   return (
     <BrowserRouter>
@@ -19,7 +19,7 @@ function Routes() {
         <Route
           exact
           path={ROUTES.base}
-          render={props => (token ? <Home {...props} /> : <Login {...props} />)}
+          render={props => (auth.accessToken ? <Home {...props} /> : <Login {...props} />)}
         />
         <CustomRoute exact path={ROUTES.signUp} component={SignUp} />
         <Redirect to={ROUTES.base} />

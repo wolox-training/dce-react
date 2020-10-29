@@ -11,6 +11,7 @@ module.exports = {
           '~components': './src/app/components',
           '~config': './src/config',
           '~constants': './src/constants',
+          '~contexts': './src/app/contexts',
           '~hooks': './src/app/hooks',
           '~screens': './src/app/screens',
           '~utils': './src/utils',
