@@ -33,7 +33,7 @@ export default function Login({ history }) {
       if (isError) {
         addToast(response.error, { appearance: TOAST_TYPES.error });
       } else {
-        dispatch({ type: AUTH_ACTIONS.activate, payload: { accessToken: response.accessToken } });
+        dispatch({ type: AUTH_ACTIONS.logIn, payload: { accessToken: response.accessToken } });
       }
     }
   }, [addToast, dispatch, isError, response]);

@@ -3,13 +3,13 @@ import { AUTH_ACTIONS } from '~constants/actions';
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case AUTH_ACTIONS.activate:
+    case AUTH_ACTIONS.logIn:
       saveStorage(action.payload.accessToken);
       return {
         ...state,
         auth: action.payload
       };
-    case AUTH_ACTIONS.remove:
+    case AUTH_ACTIONS.logOut:
       removeStorage();
       return {
         ...state,
