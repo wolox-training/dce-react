@@ -34,7 +34,7 @@ export default function Login({ history }) {
         addToast(response.data.errors, { appearance: TOAST_TYPES.error });
       } else {
         dispatch({
-          type: AUTH_ACTIONS.activate,
+          type: AUTH_ACTIONS.logIn,
           payload: {
             accessToken: response.headers.accessToken,
             client: response.headers.client,

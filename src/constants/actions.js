@@ -5,6 +5,6 @@ export const FETCH_ACTIONS = {
 };
 
 export const AUTH_ACTIONS = {
-  activate: 'ACTIVATE_AUTH',
-  remove: 'REMOVE_AUTH'
+  logIn: 'LOG_IN',
+  logOut: 'LOG_OUT'
 };

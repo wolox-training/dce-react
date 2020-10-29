@@ -4,7 +4,7 @@ import { STORAGE_KEYS } from '~constants/storage';
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case AUTH_ACTIONS.activate:
+    case AUTH_ACTIONS.logIn:
       saveStorage(action.payload.accessToken);
       saveStorage(action.payload.client, STORAGE_KEYS.client);
       saveStorage(action.payload.uid, STORAGE_KEYS.uid);
@@ -12,7 +12,7 @@ const reducer = (state, action) => {
         ...state,
         auth: action.payload
       };
-    case AUTH_ACTIONS.remove:
+    case AUTH_ACTIONS.logOut:
       clearStorage();
       return {
         ...state,
