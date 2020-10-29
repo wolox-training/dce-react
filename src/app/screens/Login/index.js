@@ -45,17 +45,20 @@ export default function Login({ history }) {
     }
   }, [addToast, dispatch, isError, response]);
 
-  const onSubmit = data => {
-    doFetch({
-      data
-    });
-  };
+  const onSubmit = useCallback(
+    data => {
+      doFetch({
+        data
+      });
+    },
+    [doFetch]
+  );
 
   return (
     <PublicLayoutWrapper>
       {isLoading && <Loader />}
       <img src={wolox} alt="wolox" className={`row ${styles.image}`} />
-      <Form onSubmit={onSubmit} />
+      <Form key="form" onSubmit={onSubmit} />
       <button type="button" className="m-bottom-3 button-secondary line" onClick={handleSignUp}>
         {i18next.t('Common:buttonSignUp')}
       </button>

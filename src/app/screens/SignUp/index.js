@@ -35,20 +35,23 @@ export default function SignUp({ history }) {
     }
   }, [addToast, isError, response, handleLogin]);
 
-  const onSubmit = data => {
-    doFetch({
-      data: {
-        ...data,
-        locale: 'en'
-      }
-    });
-  };
+  const onSubmit = useCallback(
+    data => {
+      doFetch({
+        data: {
+          ...data,
+          locale: 'en'
+        }
+      });
+    },
+    [doFetch]
+  );
 
   return (
     <PublicLayoutWrapper>
       {isLoading && <Loader />}
       <img src={wolox} alt="wolox" className={`row ${styles.image}`} />
-      <Form onSubmit={onSubmit} />
+      <Form key="form" onSubmit={onSubmit} />
       <button type="button" className="m-bottom-3 button-secondary line" onClick={handleLogin}>
         {i18next.t('Common:buttonLogin')}
       </button>

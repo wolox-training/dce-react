@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
@@ -31,4 +31,8 @@ TextField.propTypes = {
   type: PropTypes.string
 };
 
-export default TextField;
+export default memo(
+  TextField,
+  (prevProps, props) =>
+    prevProps.title === props.title && prevProps.error === props.error && prevProps.name === props.name
+);
