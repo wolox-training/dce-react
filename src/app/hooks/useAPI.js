@@ -32,7 +32,7 @@ const dataFetchReducer = (state, action) => {
   }
 };
 
-const useAPI = (config, initialData = {}, execute = false) => {
+const useAPI = (config, initialData = null, execute = false) => {
   const [state, dispatch] = useReducer(dataFetchReducer, {
     isLoading: false,
     isError: false,

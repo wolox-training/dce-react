@@ -7,12 +7,11 @@ import ROUTES from '~constants/routes';
 
 export default function CustomRoute({ component: Component, path, privateRoute = false, exact }) {
   const token = loadStorage('accessToken');
-  const conditional = privateRoute === !!token;
 
   return (
     <Route
       exact={exact}
-      render={props => (conditional ? <Component {...props} /> : <Redirect to={ROUTES.base} />)}
+      render={props => (privateRoute === !!token ? <Component {...props} /> : <Redirect to={ROUTES.base} />)}
       path={path}
     />
   );
