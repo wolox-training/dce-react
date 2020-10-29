@@ -7,6 +7,7 @@ import useAPI from '~hooks/useAPI';
 import Loader from '~components/Loader';
 import PublicLayoutWrapper from '~components/PublicLayoutWrapper';
 import { ENDPOINTS } from '~constants/api';
+
 import ROUTES from '~constants/routes';
 import { TOAST_TYPES } from '~constants/notifications';
 import { AUTH_ACTIONS } from '~constants/actions';
