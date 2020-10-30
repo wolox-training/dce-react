@@ -1,6 +1,7 @@
 @import 'variables/variables';
 
 .container {
+  cursor: pointer;
   display: grid;
   gap: 36px;
   grid-template-columns: repeat(auto-fill, 200px);

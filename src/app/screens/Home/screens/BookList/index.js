@@ -18,11 +18,14 @@ export default function BookList() {
     true
   );
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <div className={styles.container}>
-      {isLoading && <Loader />}
       {response?.data?.page?.map(book => (
-        <BookItem key={book.id} author={book.author} title={book.title} image={book.imageUrl} />
+        <BookItem key={book.id} id={book.id} author={book.author} title={book.title} image={book.imageUrl} />
       ))}
     </div>
   );

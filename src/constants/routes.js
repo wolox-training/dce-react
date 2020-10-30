@@ -1,5 +1,6 @@
 const ROUTES = {
   base: '/',
+  bookDetails: '/books/:id',
   signUp: '/sign-up'
 };
 

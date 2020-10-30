@@ -1,0 +1,84 @@
+@import 'variables/colors';
+
+@import 'variables/variables';
+
+.container {
+  background-color: $wild-sand;
+  height: 100vh;
+}
+
+.go-back {
+  cursor: pointer;
+  left: calc((100% - #{ $max-width-app }) / 2);
+  position: fixed;
+  top: 46px;
+
+  .go-back-text {
+    color: $black;
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+
+.card {
+  background-color: $white;
+  box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.5);
+  display: grid;
+  gap: 50px;
+  grid-template-columns: 260px 1fr;
+  height: 416px;
+  max-width: $max-width-app;
+  padding: 24px;
+}
+
+.card-image {
+  position: relative;
+
+  .image {
+    height: 368px;
+  }
+
+  &::before {
+    background-image: url('../../assets/images/badge.png');
+    content: '';
+    height: 120px;
+    position: absolute;
+    right: -40px;
+    top: -30px;
+    width: 100px;
+  }
+}
+
+.card-content {
+  .title-box {
+    position: relative;
+
+    .title {
+      color: $black;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 38px;
+    }
+
+    .subtitle {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 28px;
+    }
+
+    &::after {
+      border-bottom: 4px solid $earls-green;
+      bottom: -10px;
+      content: '';
+      left: 0;
+      position: absolute;
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: $max-width-app) {
+  .go-back {
+    left: 0;
+  }
+}

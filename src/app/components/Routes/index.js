@@ -9,6 +9,7 @@ import CustomRoute from './components/CustomRoute';
 const SignUp = lazy(() => import('~screens/SignUp'));
 const Login = lazy(() => import('~screens/Login'));
 const Home = lazy(() => import('~screens/Home'));
+const BookDetails = lazy(() => import('~screens/BookDetails'));
 
 function Routes() {
   const { auth } = useAuth();
@@ -22,6 +23,7 @@ function Routes() {
           render={props => (auth.accessToken ? <Home {...props} /> : <Login {...props} />)}
         />
         <CustomRoute exact path={ROUTES.signUp} component={SignUp} />
+        <CustomRoute exact privateRoute path={ROUTES.bookDetails} component={BookDetails} />
         <Redirect to={ROUTES.base} />
       </Switch>
     </BrowserRouter>
