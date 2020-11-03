@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import i18next from 'i18next';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-import backArrow from '~assets/images/back-arrow.png';
 import useAPI from '~hooks/useAPI';
 import { ENDPOINTS } from '~constants/api';
 import Loader from '~components/Loader';
+import BackButton from '~components/BackButton';
 
 import Description from './components/Description';
 import styles from './styles.module.scss';
 
-export default function BookDetails() {
+export default function BookDetails({ history }) {
   const { id } = useParams();
-  const history = useHistory();
-  const [{ isLoading, response }] = useAPI(
+  const [{ isLoading, isError, response }] = useAPI(
     {
       url: ENDPOINTS.bookDetails.replace(':id', id),
       method: 'GET'
@@ -24,16 +24,19 @@ export default function BookDetails() {
 
   const { author, editor, genre, imageUrl, title, year } = response.data;
 
+  useEffect(() => {
+    if (isError) {
+      history.replace('/not-found');
+    }
+  }, [history, isError]);
+
   if (isLoading) {
     return <Loader />;
   }
 
   return (
     <div className={`row middle center ${styles.container}`}>
-      <div className={`row middle ${styles.goBack}`} onClick={() => history.goBack()}>
-        <img src={backArrow} alt="back-arrow" className="m-right-2" />
-        <p className={styles.goBackText}>{i18next.t('Common:buttonBack')}</p>
-      </div>
+      <BackButton />
       <div className={`full-width ${styles.card}`}>
         <div className={styles.cardImage}>
           <img src={imageUrl} alt="book-cover" className={`full-width ${styles.image}`} />
@@ -51,3 +54,11 @@ export default function BookDetails() {
     </div>
   );
 }
+
+BookDetails.propTypes = {
+  history: PropTypes.shape({
+    goBack: PropTypes.func,
+    push: PropTypes.func,
+    replace: PropTypes.func
+  })
+};

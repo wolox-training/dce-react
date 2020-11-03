@@ -10,6 +10,7 @@ const SignUp = lazy(() => import('~screens/SignUp'));
 const Login = lazy(() => import('~screens/Login'));
 const Home = lazy(() => import('~screens/Home'));
 const BookDetails = lazy(() => import('~screens/BookDetails'));
+const NotFound = lazy(() => import('~screens/NotFound'));
 
 function Routes() {
   const { auth } = useAuth();
@@ -24,6 +25,7 @@ function Routes() {
         />
         <CustomRoute exact path={ROUTES.signUp} component={SignUp} />
         <CustomRoute exact privateRoute path={ROUTES.bookDetails} component={BookDetails} />
+        <CustomRoute exact privateRoute path={ROUTES.notFound} component={NotFound} />
         <Redirect to={ROUTES.base} />
       </Switch>
     </BrowserRouter>
