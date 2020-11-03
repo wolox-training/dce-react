@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
+import { AuthProvider } from './app/contexts/AuthContext';
 import App from './app';
 import './i18n';
 import './scss/application.scss';
@@ -10,7 +11,9 @@ import { register } from './serviceWorker';
 const render = () => {
   ReactDOM.render(
     <AppContainer>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </AppContainer>,
     document.getElementById('root')
   );

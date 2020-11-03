@@ -11,6 +11,7 @@
       "~components/*": ["app/components/*"],
       "~config/*": ["config/*"],
       "~constants/*": ["constants/*"],
+      "~contexts/*": ["app/contexts/*"],
       "~hooks/*": ["app/hooks/*"],
       "~screens/*": ["app/screens/*"],
       "~utils/*": ["utils/*"]

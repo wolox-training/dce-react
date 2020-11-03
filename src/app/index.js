@@ -2,8 +2,7 @@ import React, { Suspense } from 'react';
 import { ToastProvider } from 'react-toast-notifications';
 
 import Loader from '~components/Loader';
-
-import Routes from './components/Routes';
+import Routes from '~components/Routes';
 
 export default function App() {
   return (

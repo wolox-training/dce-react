@@ -2,7 +2,6 @@ import React, { useEffect, useCallback } from 'react';
 import i18next from 'i18next';
 import PropTypes from 'prop-types';
 import { useToasts } from 'react-toast-notifications';
-import clsx from 'clsx';
 
 import wolox from '~assets/logos/wolox.png';
 import useAPI from '~hooks/useAPI';
@@ -17,16 +16,13 @@ import styles from './styles.module.scss';
 
 export default function SignUp({ history }) {
   const { addToast } = useToasts();
-  const [{ isLoading, isError, response }, doFetch] = useAPI(
-    {
-      url: ENDPOINTS.signUp,
-      method: 'POST'
-    },
-    null
-  );
+  const [{ isLoading, isError, response }, doFetch] = useAPI({
+    url: ENDPOINTS.signUp,
+    method: 'POST'
+  });
 
   const handleLogin = useCallback(() => {
-    history.push(ROUTES.login);
+    history.push(ROUTES.base);
   }, [history]);
 
   useEffect(() => {
@@ -37,7 +33,7 @@ export default function SignUp({ history }) {
         handleLogin();
       }
     }
-  }, [addToast, isError, response, history, handleLogin]);
+  }, [addToast, isError, response, handleLogin]);
 
   const onSubmit = data => {
     doFetch({
@@ -53,7 +49,7 @@ export default function SignUp({ history }) {
   return (
     <PublicLayoutWrapper>
       {isLoading && <Loader />}
-      <img src={wolox} alt="wolox" className={clsx('row', styles.image)} />
+      <img src={wolox} alt="wolox" className={`row ${styles.image}`} />
       <Form onSubmit={onSubmit} />
       <button type="button" className="m-bottom-3 button-secondary line" onClick={handleLogin}>
         {i18next.t('Common:buttonLogin')}
