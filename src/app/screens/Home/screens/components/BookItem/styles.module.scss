@@ -1,0 +1,26 @@
+@import 'variables/colors';
+
+.container {
+  background-color: $white;
+  box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.5);
+  height: 300px;
+  padding: 28px 28px 23px;
+  width: 200px;
+
+  .image {
+    height: 200px;
+    width: 142px;
+  }
+
+  .title {
+    color: $black;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px;
+  }
+
+  .author {
+    color: $gray-dark;
+    line-height: 18px;
+  }
+}

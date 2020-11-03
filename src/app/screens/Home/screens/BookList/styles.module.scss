@@ -1,0 +1,11 @@
+@import 'variables/variables';
+
+.container {
+  display: grid;
+  gap: 36px;
+  grid-template-columns: repeat(auto-fill, 200px);
+  margin: 0 auto;
+  max-width: $max-width-app;
+  padding-bottom: 26px;
+  padding-top: 36px;
+}

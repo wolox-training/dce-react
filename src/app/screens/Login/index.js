@@ -7,7 +7,6 @@ import useAPI from '~hooks/useAPI';
 import Loader from '~components/Loader';
 import PublicLayoutWrapper from '~components/PublicLayoutWrapper';
 import { ENDPOINTS } from '~constants/api';
-
 import ROUTES from '~constants/routes';
 import { TOAST_TYPES } from '~constants/notifications';
 import { AUTH_ACTIONS } from '~constants/actions';
@@ -32,26 +31,34 @@ export default function Login({ history }) {
   useEffect(() => {
     if (response) {
       if (isError) {
-        addToast(response.error, { appearance: TOAST_TYPES.error });
+        addToast(response.data.errors, { appearance: TOAST_TYPES.error });
       } else {
-        dispatch({ type: AUTH_ACTIONS.logIn, payload: { accessToken: response.accessToken } });
+        dispatch({
+          type: AUTH_ACTIONS.logIn,
+          payload: {
+            accessToken: response.headers.accessToken,
+            client: response.headers.client,
+            uid: response.headers.uid
+          }
+        });
       }
     }
   }, [addToast, dispatch, isError, response]);
 
-  const onSubmit = data => {
-    doFetch({
-      data: {
-        session: data
-      }
-    });
-  };
+  const onSubmit = useCallback(
+    data => {
+      doFetch({
+        data
+      });
+    },
+    [doFetch]
+  );
 
   return (
     <PublicLayoutWrapper>
       {isLoading && <Loader />}
       <img src={wolox} alt="wolox" className={`row ${styles.image}`} />
-      <Form onSubmit={onSubmit} />
+      <Form key="form" onSubmit={onSubmit} />
       <button type="button" className="m-bottom-3 button-secondary line" onClick={handleSignUp}>
         {i18next.t('Common:buttonSignUp')}
       </button>

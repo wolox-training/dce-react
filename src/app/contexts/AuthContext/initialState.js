@@ -2,7 +2,9 @@ import { loadStorage } from '~utils/storage';
 
 const initialState = {
   auth: {
-    accessToken: loadStorage()
+    accessToken: loadStorage(),
+    client: loadStorage('client'),
+    uid: loadStorage('uid')
   }
 };
 

@@ -1,3 +1,5 @@
 export const STORAGE_KEYS = {
-  access: 'accessToken'
+  access: 'accessToken',
+  client: 'client',
+  uid: 'uid'
 };

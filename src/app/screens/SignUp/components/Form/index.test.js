@@ -35,14 +35,14 @@ describe('signout form', () => {
     fireEvent.input(screen.getByTestId('lastName'), { target: { value: 'Celis' } });
     fireEvent.input(screen.getByTestId('email'), { target: { value: 'diego.celis@wolox.co' } });
     fireEvent.input(screen.getByTestId('password'), { target: { value: 'Test1234' } });
-    fireEvent.input(screen.getByTestId('confirmPassword'), { target: { value: 'Test1234' } });
+    fireEvent.input(screen.getByTestId('passwordConfirmation'), { target: { value: 'Test1234' } });
 
     expect(screen.getByRole('form')).toHaveFormValues({
       firstName: 'Diego',
       lastName: 'Celis',
       email: 'diego.celis@wolox.co',
       password: 'Test1234',
-      confirmPassword: 'Test1234'
+      passwordConfirmation: 'Test1234'
     });
 
     fireEvent.submit(screen.getByRole('button'));

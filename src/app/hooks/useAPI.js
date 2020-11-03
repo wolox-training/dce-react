@@ -52,7 +52,7 @@ const useAPI = (config, initialData = null, execute = false) => {
         if (!didCancel) {
           dispatch({
             type: result.ok ? FETCH_ACTIONS.success : FETCH_ACTIONS.error,
-            payload: result.data
+            payload: result
           });
         }
       } catch (error) {

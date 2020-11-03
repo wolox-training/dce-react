@@ -9,14 +9,14 @@ import {
   emailValidator,
   nameValidator,
   passwordValidator,
-  confirmPasswordValidator
+  passwordConfirmationValidator
 } from '~utils/inputValidators';
 
 export default function Form({ onSubmit }) {
   const { control, register, handleSubmit, errors } = useForm();
   const password = useWatch({
     control,
-    name: AUTH_FIELDS.confirmPassword
+    name: AUTH_FIELDS.passwordConfirmation
   });
 
   return (
@@ -55,11 +55,11 @@ export default function Form({ onSubmit }) {
       />
       <TextField
         type="password"
-        name={AUTH_FIELDS.confirmPassword}
-        customRef={register(confirmPasswordValidator(password))}
-        title={i18next.t('Common:inputConfirmPassword')}
-        error={errors[AUTH_FIELDS.confirmPassword]}
-        data-testid="confirmPassword"
+        name={AUTH_FIELDS.passwordConfirmation}
+        customRef={register(passwordConfirmationValidator(password))}
+        title={i18next.t('Common:inputPasswordConfirmation')}
+        error={errors[AUTH_FIELDS.passwordConfirmation]}
+        data-testid="passwordConfirmation"
       />
       <button type="submit" className="button-primary m-top-1">
         {i18next.t('Common:buttonSignUp')}

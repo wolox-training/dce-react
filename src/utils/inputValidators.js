@@ -5,7 +5,7 @@ const required = () => ({ value: true, message: i18next.t('Validators:required')
 const minLength = number => ({ value: number, message: i18next.t('Validators:minLength', { number }) });
 const maxLength = number => ({ value: number, message: i18next.t('Validators:maxLength', { number }) });
 
-const min = 8;
+const min = 6;
 const max = 25;
 
 export const emailValidator = {
@@ -26,14 +26,14 @@ export const passwordValidator = {
   minLength: minLength(min),
   maxLength: maxLength(max),
   pattern: {
-    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/,
     message: i18next.t('Validators:password')
   }
 };
 
-export const confirmPasswordValidator = password => ({
+export const passwordConfirmationValidator = password => ({
   required: required(),
   validate: {
-    matchesPreviousPassword: value => password === value || i18next.t('Validators:confirmPassword')
+    matchesPreviousPassword: value => password === value || i18next.t('Validators:passwordConfirmation')
   }
 });

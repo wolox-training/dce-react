@@ -28,29 +28,30 @@ export default function SignUp({ history }) {
   useEffect(() => {
     if (response) {
       if (isError) {
-        addToast(response, { appearance: TOAST_TYPES.error });
+        addToast(response.data?.errors?.fullMessages, { appearance: TOAST_TYPES.error });
       } else {
         handleLogin();
       }
     }
   }, [addToast, isError, response, handleLogin]);
 
-  const onSubmit = data => {
-    doFetch({
-      data: {
-        user: {
+  const onSubmit = useCallback(
+    data => {
+      doFetch({
+        data: {
           ...data,
           locale: 'en'
         }
-      }
-    });
-  };
+      });
+    },
+    [doFetch]
+  );
 
   return (
     <PublicLayoutWrapper>
       {isLoading && <Loader />}
       <img src={wolox} alt="wolox" className={`row ${styles.image}`} />
-      <Form onSubmit={onSubmit} />
+      <Form key="form" onSubmit={onSubmit} />
       <button type="button" className="m-bottom-3 button-secondary line" onClick={handleLogin}>
         {i18next.t('Common:buttonLogin')}
       </button>

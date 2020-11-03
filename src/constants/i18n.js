@@ -5,7 +5,7 @@ i18next.addResources('es', 'Common', {
   inputLastName: 'Apellido',
   inputEmail: 'Correo',
   inputPassword: 'Contrasena',
-  inputConfirmPassword: 'Confirmar Contrasena',
+  inputPasswordConfirmation: 'Confirmar Contrasena',
   buttonSignUp: 'Sign Up',
   buttonLogin: 'Login'
 });
@@ -16,5 +16,5 @@ i18next.addResources('es', 'Validators', {
   minLength: 'Debe tener minimo {{number}} caracteres',
   maxLength: 'Deber tener {{number}} o menos caracteres',
   password: 'La contrasena debe contener minimo una letra miniscula, una letra mayuscula y un numero',
-  confirmPassword: 'Las contrasenas no coinciden'
+  passwordConfirmation: 'Las contrasenas no coinciden'
 });
