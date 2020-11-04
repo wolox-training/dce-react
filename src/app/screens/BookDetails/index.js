@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import useAPI from '~hooks/useAPI';
 import { ENDPOINTS } from '~constants/api';
+import ROUTES from '~constants/routes';
 import Loader from '~components/Loader';
 import BackButton from '~components/BackButton';
 
@@ -26,7 +27,7 @@ export default function BookDetails({ history }) {
 
   useEffect(() => {
     if (isError) {
-      history.replace('/not-found');
+      history.replace(ROUTES.notFound);
     }
   }, [history, isError]);
 

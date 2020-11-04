@@ -1,4 +1,5 @@
 import React from 'react';
+import i18next from 'i18next';
 
 import BackButton from '~components/BackButton';
 
@@ -8,7 +9,7 @@ export default function NotFound() {
   return (
     <div className={`row middle center ${styles.container}`}>
       <BackButton />
-      <p className={styles.text}>Not Found</p>
+      <p className={styles.text}>{i18next.t('NotFound:message')}</p>
     </div>
   );
 }
