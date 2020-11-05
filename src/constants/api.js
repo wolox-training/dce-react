@@ -3,5 +3,6 @@ export const REST_METHODS = ['GET', 'HEAD', 'DELETE', 'LINK', 'UNLINK', 'POST', 
 export const ENDPOINTS = {
   login: '/users/sign_in',
   signUp: '/users',
-  bookList: '/books'
+  bookList: '/books',
+  bookDetails: '/books/:id'
 };
